@@ -64,10 +64,43 @@
 
 * 如果定义一个同名变量 第一个变量会被第二个变量隐藏 （shadowing）
 
+* 可变引用不能有多个 不可变可以  读写冲突 
+
 * ```rust
-  to_string 
-  String
-  &str
+  let a:&str = 'adasd';
+  let b =String::from("hello world!")
+  let c:&mut String= &mut b;//可变引用只有一个
+  let d:&String =&b;//这个时候也不能借用 也就是可变不可变不能同时存在
   ```
 
+* ```rust
+  String
+  &str
+  String 是堆分配的、可变的，拥有数据的所有权。它适用于动态操作字符串的场景。
+  str 是一种字符串的不可变切片，通常通过引用使用（&str），并且是静态或常量数据的引用。
+  ？？？还没有理解
+  ```
   
+* 结构体很正常 可以用元组当结构体
+
+  ```rust
+  struct a(1,ad,3.2);
+  //虽然不知道有什么用
+  即便两个结构体AB类型一致  传参A也会报错 除非别名
+  ```
+
+*  ```
+   //可变数组
+   let mut v：Vec::new();
+   let v =vec![1,2,3];//使用vec！宏
+   push pop
+   ```
+
+* ```rust
+  let mut a =HashMap::new();
+  insert
+  let b=a.get(&key).copied().unwrap_or(0);//copied将T复制一份  unwrap_or(0)用来提供默认值 如果是none就提供默认值
+  ```
+
+* 
+
