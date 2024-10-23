@@ -102,5 +102,92 @@
   let b=a.get(&key).copied().unwrap_or(0);//copied将T复制一份  unwrap_or(0)用来提供默认值 如果是none就提供默认值
   ```
 
+* 枚举类型
+  
+  ```rust
+  enum Color{
+    Red(i32);Green(String);Blue(f32);
+  }//能放任何类型 不过实例成员就要加类型
+  let a =Color::Red(i32);
+  let b = Color::Green("hello worls".to_string());
+  ```
+  
+  * Rust 中不推荐使用空指针  推荐使用Optional  用这个枚举来实现是否存在 用来代替空指针
+  
+  ```rust
+  let player:Option<T:32>
+  player = Some(10); //必须使用Some
+  player = None;
+  if let Some(a) = player{}else{};
+  ```
+  
+  * 类似的还有
+  
+  ```rust
+  Ok(result)//表示结果
+  Err(error)
+  Result<T: , E:>//成功了 没成功的类型
+  
+  fn a(num:i32)->Result<T:i32,E:String>{
+    OK(s);
+  }
+  fn main(){
+    let result = a(0);
+    if let Ok(value)=result {};//取出Ok的值并拿出value  ？？？？？
+  }
+  ```
+  
+* 模式匹配  match
+
+  ```rust
+  enum Color{
+    Red(i32);Green(String);Blue(f32);
+  }
+  fn color(color:Color) -> u8{
+    match color{
+      Color::Red(_)=>1,
+      Color::Green(_)=>2,
+      Color::Blue(value)=>{
+        if let value =1.0 
+        { }
+        else{}
+      }
+    }
+  }
+  
+  //
+  fn main() {
+      let age = 25;
+      match age {
+          0..=18 => println!("Underage"),
+          19..=65 => println!("Adult"),
+          _ => println!("Senior"),
+      }
+  }
+  //_ 通配符
+  //
+  fn main() {
+      let pair = (0, -2);
+      match pair {
+          (0, y) => println!("First is zero, y is {}", y),
+          (x, 0) => println!("x is {}, second is zero", x),
+          _ => println!("Neither are zero"),
+      }
+  }
+  //如果第一个值是0  匹配成功 并将第二个值绑到y上 ？？？？
+  //不理解怎么实现的
+  ```
+
+* 语法糖是什么？
+
+* 闭包 解包 打包
+
+* ```rust
+  //collect 格式转换 但是只能转换
+  //待补充 不是很懂
+  ```
+
 * 
+
+
 
